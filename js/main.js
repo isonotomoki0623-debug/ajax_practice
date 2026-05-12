@@ -87,3 +87,46 @@ function loadPosts() {
 //             document.getElementById("loading").innerText = "";
 //         });
 // }
+
+
+
+// 投稿データを取得する関数
+function reset() {
+
+    const btn = document.getElementById("resetButton");
+
+    // リクエスト前に読み込み中を表示
+    // document.getElementById("loading").innerText = "読み込み中...";
+
+    btn.disabled = true;
+    btn.innerText = "リセット中...";
+
+    const postList = document.getElementById("postList");
+
+    // 最初に中身を空にする
+    postList.innerHTML = "";
+
+
+    fetch("https://jsonplaceholder.typicode.com/posts/1", { method: 'DELETE' })
+        
+        .then(response => {
+            // if (!response.ok) throw new Error("リセット失敗");
+            // alert("リセットが完了しました");
+        })
+
+        // エラー処理
+        .catch(error => {
+
+            console.log(error);
+
+            alert("データ削除失敗");
+
+        })
+
+        .finally(() => {
+            // リクエスト終了後の処理
+            // document.getElementById("loading").innerText = "";
+            btn.disabled = false;
+            btn.innerText = "データ削除";
+        });
+}
