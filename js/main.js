@@ -28,6 +28,9 @@ function loadPosts() {
         // 投稿タイトルを設定
         li.innerText = post.title;
 
+        // 投稿本文を設定
+        li.innerText = post.body;
+
         // ulに追加
         postList.appendChild(li);
 
