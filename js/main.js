@@ -1,50 +1,89 @@
 // 投稿データを取得する関数
 function loadPosts() {
 
-  // APIへリクエスト送信
-  fetch("https://jsonplaceholder.typicode.com/posts")
+    const btn = document.getElementById("loadButton");
 
-    // レスポンスをJSON形式に変換
-    .then(response => response.json())
+    // リクエスト前に読み込み中を表示
+    // document.getElementById("loading").innerText = "読み込み中...";
 
-    // JSONデータを受け取る
-    .then(data => {
+    btn.disabled = true;
+    btn.innerText = "読み込み中...";
 
-      // ul要素を取得
-      const postList = document.getElementById("postList");
+    // APIへリクエスト送信
+    fetch("https://jsonplaceholder.typicode.com/posts")
 
-      // 最初に中身を空にする
-      postList.innerHTML = "";
+        // レスポンスをJSON形式に変換
+        .then(response => response.json())
 
-      // 最初の5件だけ表示する
-      data.slice(0, 5).forEach(post => {
+        // JSONデータを受け取る
+        .then(data => {
 
-      // dataを1件ずつ取り出す
-      //data.forEach(post => {
+            // ul要素を取得
+            const postList = document.getElementById("postList");
 
-        // liタグを作成
-        const li = document.createElement("li");
+            // 最初に中身を空にする
+            postList.innerHTML = "";
 
-        // 投稿タイトルを設定
-        li.innerText = post.title;
 
-        // 投稿本文を設定
-        li.innerText = post.body;
+            // 最初の5件だけ表示する
+            data.slice(0, 5).forEach(post => {
 
-        // ulに追加
-        postList.appendChild(li);
+                // dataを1件ずつ取り出す
+                //data.forEach(post => {
 
-      });
+                // liタグを作成
+                const li = document.createElement("li");
 
-    })
+                li.innerText = `${post.id} : ${post.title} \n ${post.body}`;
 
-    // エラー処理
-    .catch(error => {
+                // // 投稿タイトルを設定
+                // li.innerText = post.title;
 
-      console.log(error);
+                // // 投稿本文を設定
+                // li.innerText = post.body;
 
-      alert("データ取得失敗");
+                // ulに追加
+                postList.appendChild(li);
 
-    });
+            });
 
+        })
+
+        // エラー処理
+        .catch(error => {
+
+            console.log(error);
+
+            alert("データ取得失敗");
+
+        })
+
+        .finally(() => {
+            // リクエスト終了後の処理
+            // document.getElementById("loading").innerText = "";
+            btn.disabled = false;
+            btn.innerText = "データ取得";
+        });
 }
+
+// function loading(message) {
+
+//     // リクエスト前に読み込み中を表示
+//     document.getElementById("loading").innerText = message;
+
+//         .then(() => {
+
+//         })
+
+//         .catch(error => {
+
+//             console.log(error);
+
+//             alert("データ取得失敗");
+//         })
+
+//         .finally(() => {
+//             // リクエスト終了後の処理
+//             document.getElementById("loading").innerText = "";
+//         });
+// }

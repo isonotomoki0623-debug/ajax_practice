@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <title>Ajax Practice</title>
+    <title>Ajax Practice</title>
 
-  <!-- CSS読み込み -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- CSS読み込み -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <h1>投稿一覧</h1>
+    <h1>投稿一覧</h1>
 
-  <!-- ボタン -->
-  <button onclick="loadPosts()">
-    データ取得
-  </button>
+    <!-- ボタン -->
+    <button id="loadButton", onclick="loadPosts()">
+        <!-- ボタンを操作不能（クリックできない状態）にする -->
+        データ取得
+    </button>
 
-  <!-- データ表示場所 -->
-  <ul id="postList"></ul>
+    <!-- データ表示場所 -->
+    <ul id="postList"></ul>
 
-  <!-- JavaScript読み込み -->
-  <script src="js/main.js"></script>
+    <!-- JavaScript読み込み -->
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>
