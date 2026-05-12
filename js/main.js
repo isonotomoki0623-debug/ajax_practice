@@ -16,8 +16,11 @@ function loadPosts() {
       // 最初に中身を空にする
       postList.innerHTML = "";
 
+      // 最初の5件だけ表示する
+      data.slice(0, 5).forEach(post => {
+
       // dataを1件ずつ取り出す
-      data.forEach(post => {
+      //data.forEach(post => {
 
         // liタグを作成
         const li = document.createElement("li");
